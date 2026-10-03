@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Empêcher l'accès direct aux fichiers sensibles
+RewriteRule ^\.env - [F,L]
+
+# Rediriger vers index.php si le fichier/dossier n'existe pas
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
